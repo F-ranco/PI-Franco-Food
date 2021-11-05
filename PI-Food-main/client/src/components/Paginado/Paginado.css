@@ -1,0 +1,10 @@
+.paginado {
+  list-style: none;
+  display: flex;
+}
+
+.number {
+  padding: 10px;
+  border: 1px solid white;
+  cursor: pointer;
+}
