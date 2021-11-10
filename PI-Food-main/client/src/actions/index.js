@@ -36,6 +36,15 @@ export function postRecipe(payload) {
     return info;
   };
 }
+export function getDetail(id) {
+  return async function (dispatch) {
+    var info = await axios.get("http://localhost:3001/recipes/" + id);
+    return dispatch({
+      type: "GET_DETAILS",
+      payload: info.data,
+    });
+  };
+}
 
 export function filterRecipesByTypes(value) {
   return {
@@ -46,6 +55,12 @@ export function filterRecipesByTypes(value) {
 export function orderByScore(value) {
   return {
     type: "ORDER_BY_SCORE",
+    value,
+  };
+}
+export function orderByName(value) {
+  return {
+    type: "ORDER_BY_NAME",
     value,
   };
 }

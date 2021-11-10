@@ -1,0 +1,26 @@
+.detailContainer {
+  display: flex;
+  flex-direction: column;
+  border: initial;
+  /* background-color: #96c7c1; */
+  /* opacity: 0.8; */
+  margin: 10px;
+  padding: 5px;
+  border-radius: 20px;
+  box-shadow: 5px 2px 15px 0px rgb(195, 194, 194);
+  background-color: rgba(183, 188, 204, 0.76);
+  backdrop-filter: blur(200px);
+  /* box-shadow: 5px 2px 15px 0px #1f1d36; */
+  opacity: 0.9;
+}
+#buttonReturn {
+  background-color: #f9ffea;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  transition: all 0.3s ease 0s;
+}
+#buttonReturn:hover {
+  background-color: #ffecda;
+}

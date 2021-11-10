@@ -1,9 +1,16 @@
 .paginado {
   list-style: none;
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: baseline;
+  align-content: stretch;
 }
 
 .number {
+  background-color: black;
+  color: white;
   padding: 10px;
   border: 1px solid white;
   cursor: pointer;

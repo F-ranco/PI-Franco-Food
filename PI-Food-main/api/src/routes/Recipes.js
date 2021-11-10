@@ -23,8 +23,8 @@ router.get("/", async (req, res, next) => {
           diets: e.diets,
           image: e.image,
           summary: e.summary,
-          healthScore: e.healthScore,
-          healthyFoodLevel: e.spoonacularScore, //veryHealthy
+          healthScore: e.spoonacularScore,
+          healthyFoodLevel: e.healthScore,
           steps: e.analyzedInstructions[0]?.steps.map((e) => {
             return {
               step: e.number + ": " + e.step,
@@ -33,11 +33,11 @@ router.get("/", async (req, res, next) => {
         };
       });
       dbInfo = await Recipe.findAll({
-        // where: {
-        //   name: {
-        //     [Op.iLike]: "%" + name + "%",
-        //   },
-        // },
+        where: {
+          name: {
+            [Op.iLike]: "%" + name + "%",
+          },
+        },
         include: {
           model: Diets,
           attributes: ["name"],
@@ -65,8 +65,8 @@ router.get("/", async (req, res, next) => {
           summary: e.summary,
           diets: e.diets,
           image: e.image,
-          healthScore: e.healthScore,
-          healthyFoodLevel: e.spoonacularScore, //veryHealthy
+          healthScore: e.spoonacularScore,
+          healthyFoodLevel: e.healthScore,
           steps: e.analyzedInstructions[0]?.steps.map((e) => {
             return {
               step: e.number + ": " + e.step,

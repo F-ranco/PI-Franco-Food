@@ -1,11 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRecipes, filterRecipesByTypes, orderByScore } from "../../actions";
-import { Link } from "react-router-dom";
+import {
+  getRecipes,
+  filterRecipesByTypes,
+  orderByScore,
+  orderByName,
+} from "../../actions";
+import { Link, NavLink } from "react-router-dom";
 import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
 import SearchBar from "../SearchBar/SearchBar";
+import "./Home.css";
 
 export default function Home() {
   const dispatch = useDispatch(); //para llamar a una function
@@ -45,40 +51,52 @@ export default function Home() {
 
   function handleFilterTypes(e) {
     dispatch(filterRecipesByTypes(e.target.value));
+    setCurrentPage(1);
   }
   function handleSortByScore(e) {
     e.preventDefault();
     dispatch(orderByScore(e.target.value));
     setCurrentPage(1);
-    setOrder(`Ordenado ${e.target.value}`);
+    setOrder(`${e.target.value}`);
+  }
+  function handleSortByName(e) {
+    e.preventDefault();
+    dispatch(orderByName(e.target.value));
+    setCurrentPage(1);
+    setOrder(`${e.target.value}`);
   }
 
   return (
-    <div>
-      <Link to="/recipe">Crear Receta</Link>
-      <h1>Titulo de mi pagina</h1>
-      <button
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        Volver a cargar todas las recetas
-      </button>
-      <SearchBar />
-      <div>
-        <select>
-          <option value="ASC">Ascendente</option>
+    <div className="Home">
+      <div className="topDiv">
+        <button
+          onClick={(e) => {
+            handleClick(e);
+          }}
+          id="buttonHome"
+        >
+          HOME
+        </button>
+        <div className="navLink">
+          <NavLink to="/recipe">Create new recipe</NavLink>
+        </div>
+        <SearchBar />
+      </div>
+
+      <div className="filters">
+        <select onChange={(e) => handleSortByName(e)}>
+          <option value="ASC">A - Z</option>
           {/* para enviar la info por payload necesito un value */}
-          <option value="DESC">Descendente</option>
+          <option value="DESC">Z - A</option>
         </select>
         <select onChange={(e) => handleSortByScore(e)}>
-          <option value="Mayor Puntuacion">Mayor Puntuación</option>
+          <option value="Mayor Puntuacion">Highest Score</option>
           {/* para enviar la info por payload necesito un value */}
-          <option value="Menor Puntuacion">Menor Puntuación</option>
+          <option value="Menor Puntuacion">Lowest Score</option>
         </select>
 
         <select onChange={(e) => handleFilterTypes(e)}>
-          <option value="All">Todos los tipos</option>
+          <option value="All">All</option>
           <option value="gluten free">Gluten Free</option>
           <option value="dairy free">Dairy Free</option>
           <option value="vegan">Vegan</option>
@@ -89,33 +107,51 @@ export default function Home() {
           <option value="fodmap friendly">Low FODMAP</option>
           <option value="whole 30">Whole30</option>
         </select>
+      </div>
 
+      <div>
         <Paginado
           recipesPorPage={recipesPorPage}
           allRecipes={allRecipes.length}
           paginado={paginado}
         />
-
-        {currentRecipes?.map((e) => {
-          return (
-            <Link to={"/home/" + e.id}>
-              <Card
-                key={e.id}
-                name={e.name}
-                image={
-                  e.image
-                    ? e.image
-                    : "https://ugc.kn3.net/i/760x/http://3.bp.blogspot.com/_HtUqZCoetxE/TI-AEcTItxI/AAAAAAAAABI/0Kr30Fwgnuk/s1600/chef.jpg"
-                }
-                diets={
-                  "Dietas: " +
-                  (e.diets ? e.diets : e.diets.map((e) => e.name)) +
-                  " ."
-                }
-              />
-            </Link>
-          );
-        })}
+      </div>
+      <div className="recipeContainer">
+        {currentRecipes.length === 0 ? (
+          <h3 id="recipeNotFound">No recipes found</h3>
+        ) : (
+          currentRecipes?.map((e) => {
+            return (
+              <div>
+                <Link to={"/home/" + e.id}>
+                  <Card
+                    key={e.id}
+                    name={e.name}
+                    image={
+                      e.image
+                        ? e.image
+                        : "https://ugc.kn3.net/i/760x/http://3.bp.blogspot.com/_HtUqZCoetxE/TI-AEcTItxI/AAAAAAAAABI/0Kr30Fwgnuk/s1600/chef.jpg"
+                    }
+                    diets={
+                      "Diets: " +
+                      (!e.createdInDb
+                        ? e.diets + " "
+                        : e.diets.map((el) => el.name + " ")) +
+                      " ."
+                    }
+                  />
+                </Link>
+              </div>
+            );
+          })
+        )}
+      </div>
+      <div>
+        <Paginado
+          recipesPorPage={recipesPorPage}
+          allRecipes={allRecipes.length}
+          paginado={paginado}
+        />
       </div>
     </div>
   );

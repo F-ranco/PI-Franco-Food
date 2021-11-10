@@ -1,0 +1,26 @@
+.LandingPage {
+  background-image: url("https://cloudfront-us-east-1.images.arcpublishing.com/infobae/WVUERN2UUZDXHPHOX6LCBCGAPQ.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 660px;
+  padding: 0px 0px 20px;
+}
+.letras {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+  height: 750px;
+  padding: 0px 0px 0px 0px;
+  font-family: cursive;
+  font-size: 25px;
+  color: #f6d7a7;
+}
+.button button {
+  font-size: 20px;
+  font-weight: 300px;
+  margin-left: 20px;
+  padding-left: 0px;
+}

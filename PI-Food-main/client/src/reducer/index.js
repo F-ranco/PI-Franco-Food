@@ -2,6 +2,7 @@ const initialState = {
   recipes: [],
   allRecipes: [],
   typeOfDyet: [], //para el post
+  details: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -38,8 +39,13 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         typeOfDyet: action.payload,
       };
+    case "GET_DETAILS":
+      return {
+        ...state,
+        details: action.payload,
+      };
     case "ORDER_BY_SCORE":
-      let sortedArray =
+      let sortedArrayScore =
         action.value === "Mayor Puntuacion"
           ? state.recipes.sort(function (a, b) {
               if (a.healthScore < b.healthScore) return 1;
@@ -53,7 +59,24 @@ export default function rootReducer(state = initialState, action) {
             });
       return {
         ...state,
-        recipes: sortedArray,
+        recipes: sortedArrayScore,
+      };
+    case "ORDER_BY_NAME":
+      let sortedArrayName =
+        action.value === "ASC"
+          ? state.recipes.sort(function (a, b) {
+              if (a.name > b.name) return 1;
+              if (a.name < b.name) return -1;
+              return 0;
+            })
+          : state.recipes.sort(function (a, b) {
+              if (a.name > b.name) return -1;
+              if (a.name < b.name) return 1;
+              return 0;
+            });
+      return {
+        ...state,
+        recipes: sortedArrayName,
       };
     default:
       return state;

@@ -15,13 +15,10 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     summary: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(2000),
       allowNull: false,
     },
-    // diets: {
-    //   type: DataTypes.STRING,
-    //   allowNull: true,
-    // },
+
     image: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -35,7 +32,7 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     steps: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(2000),
       allowNull: true,
     },
     createdInDb: {
