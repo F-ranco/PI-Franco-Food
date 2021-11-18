@@ -50,5 +50,5 @@ El contenido de `client` fue creado usando: Create React App.
   
   * GET https://api.spoonacular.com/recipes/{id}/information
 
-
+<em>Debido a que en la API existen alrededor de 5 mil recetas, por cuestiones de simplificación decidí obtener y paginar las primeras 100.</em>
 
