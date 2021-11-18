@@ -23,7 +23,7 @@ La finalidad de esta SPA es que puedan ver distintas recetas de comida junto con
   
  <br></br> 
  
- ⚠️⚠️⚠️⚠️⚠️ [Haz click en este enlace para ver un video sobre este proyecto](https://www.linkedin.com/in/franco-oropel/) ⚠️⚠️⚠️⚠️⚠️⚠️ 
+ ⚠️⚠️⚠️ [Haz click en este enlace para ver un video sobre este proyecto](https://www.linkedin.com/in/franco-oropel/) ⚠️⚠️⚠️ 
  
   <br></br> 
   
