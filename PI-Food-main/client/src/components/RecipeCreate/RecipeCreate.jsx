@@ -18,12 +18,7 @@ export default function RecipeCreate() {
     healthyFoodLevel: "",
     steps: "",
   });
-  //definir ingles o español
-  //  dar css al crear receta,
-  //  acomodar paso a paso de receta,
-  //  nombre de la pag en la pestaña y logo
-  // Agustin Maurel11:03
-  // setear 1er pagina cuando se aplica un filtro
+
   function handleChange(e) {
     setInput({
       ...input,
@@ -66,7 +61,7 @@ export default function RecipeCreate() {
       <h1 id="title">Create your own recipe!</h1>
 
       <form onSubmit={(e) => handleSubmit(e)} className="Formulario">
-        <div>
+        <div className="inputs">
           <div>
             <label>Name:</label>
             <input
@@ -89,6 +84,7 @@ export default function RecipeCreate() {
           <div>
             <label>Score:</label>
             <input
+              id="score"
               type="number"
               value={input.healthScore}
               name="healthScore"
@@ -100,6 +96,7 @@ export default function RecipeCreate() {
           <div>
             <label>Healthy Food Level:</label>
             <input
+              id="HealthyFoodLevel"
               type="number"
               value={input.healthyFoodLevel}
               name="healthyFoodLevel"

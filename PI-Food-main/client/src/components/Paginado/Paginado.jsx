@@ -11,13 +11,13 @@ export default function Paginado({ allRecipes, recipesPorPage, paginado }) {
 
   return (
     <nav>
-      <ul className="paginado">
+      <div className="paginado">
         {pageNumbers?.map((number) => (
-          <li className="number" key={number}>
+          <button className="number" key={number}>
             <a onClick={() => paginado(number)}>{number}</a>
-          </li>
+          </button>
         ))}
-      </ul>
+      </div>
     </nav>
   );
 }

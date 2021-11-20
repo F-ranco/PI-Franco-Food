@@ -1,26 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
 .detailContainer {
-  display: flex;
-  flex-direction: column;
   border: initial;
-  /* background-color: #96c7c1; */
-  /* opacity: 0.8; */
-  margin: 10px;
+  width: 80%;
+  height: 610px;
+  margin: 15px 0px 0px 200px;
   padding: 5px;
   border-radius: 20px;
   box-shadow: 5px 2px 15px 0px rgb(195, 194, 194);
-  background-color: rgba(183, 188, 204, 0.76);
+  background-color: antiquewhite;
   backdrop-filter: blur(200px);
-  /* box-shadow: 5px 2px 15px 0px #1f1d36; */
-  opacity: 0.9;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
 }
 #buttonReturn {
   background-color: #f9ffea;
   border-radius: 4px;
   border: none;
+  width: 150px;
+  font-size: 30px;
+  margin-top: 10px;
   cursor: pointer;
   padding: 4px;
   transition: all 0.3s ease 0s;
 }
 #buttonReturn:hover {
-  background-color: #ffecda;
+  background-color: rgb(32, 35, 44);
+  color: antiquewhite;
+}
+.detailContainerUno {
+  position: relative;
+  right: 100px;
+  border-radius: 20px;
+  width: 300px;
+  height: 590px;
+  margin-top: 6px;
+  background-color: #533535;
+  box-shadow: 0px 3px 12px 3px #1f1d36;
+}
+.detailContainerDos {
+  text-align: left;
+  margin-left: 0px;
+  position: relative;
+  right: 50px;
+  font-size: 14.4px;
+  width: 70%;
+  height: 70%;
+  background-color: antiquewhite;
+}
+.detailContainerUno h2 {
+  color: antiquewhite;
+  padding: 5px;
+  font-size: 15px;
+  font-family: "Raleway", sans-serif;
+}
+.detailContainerUno h1 {
+  color: #e2c275;
+  padding: 5px 6px 0px 6px;
+  font-size: 28px;
+  font-family: "Playfair Display", serif;
+}
+.detailContainerDos p {
+  text-decoration: underline;
+  font-family: "Caveat", cursive;
+  font-size: 20px;
 }

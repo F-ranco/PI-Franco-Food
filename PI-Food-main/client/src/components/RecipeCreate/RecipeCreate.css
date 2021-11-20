@@ -12,6 +12,24 @@
   padding: 20px 0px 20px 0px;
   font-family: "Poppins", sans-serif;
 }
+.inputs {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: stretch;
+  width: 600px;
+}
+.inputs input {
+  width: 500px;
+}
+.inputs #score {
+  width: 60px;
+}
+.inputs #HealthyFoodLevel {
+  width: 60px;
+}
 .tipoDeDietas {
   background-color: #864879;
   border-radius: 20px;

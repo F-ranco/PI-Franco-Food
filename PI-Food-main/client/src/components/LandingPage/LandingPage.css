@@ -1,9 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bad+Script&family=Monoton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 .LandingPage {
   background-image: url("https://cloudfront-us-east-1.images.arcpublishing.com/infobae/WVUERN2UUZDXHPHOX6LCBCGAPQ.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 660px;
-  padding: 0px 0px 20px;
+  width: 100%;
+  height: 100%;
+  max-height: 713px;
 }
 .letras {
   display: flex;
@@ -12,15 +18,25 @@
   justify-content: center;
   align-items: center;
   align-content: stretch;
-  height: 750px;
-  padding: 0px 0px 0px 0px;
-  font-family: cursive;
+  height: 100vh;
+  font-family: "Bad Script", cursive;
   font-size: 25px;
   color: #f6d7a7;
 }
-.button button {
-  font-size: 20px;
+#button button {
+  border: 5px solid;
+  background: #f6d7a7;
+  border-color: #e9a6a6;
+  font-size: 25px;
+  font-family: "Bebas Neue", cursive;
   font-weight: 300px;
-  margin-left: 20px;
-  padding-left: 0px;
+  padding: 10px 10px 10px 10px;
+  margin-left: 40px;
+  width: 250px;
+  height: 80px;
+  color: rgb(238, 174, 202);
+  color: #864879;
+}
+#button button:hover {
+  transform: scale(1.1);
 }

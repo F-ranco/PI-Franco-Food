@@ -3,6 +3,7 @@ const initialState = {
   allRecipes: [],
   typeOfDyet: [], //para el post
   details: [],
+  cargando: false,
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -12,7 +13,10 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         recipes: action.payload,
         allRecipes: action.payload, //para el filtrado
+        cargando: false,
       };
+    case "CARGANDO":
+      return { ...state, cargando: true };
 
     case "GET_NAME_RECIPES":
       return {
@@ -25,7 +29,11 @@ export default function rootReducer(state = initialState, action) {
       const typesFiltered =
         action.value === "All"
           ? allRecipes
-          : allRecipes.filter((e) => e.diets.includes(action.value));
+          : allRecipes.filter(
+              (e) =>
+                e.diets.includes(action.value) ||
+                e.diets.map((e) => e.name).includes(action.value)
+            );
       return {
         ...state,
         recipes: typesFiltered,
@@ -43,6 +51,7 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         details: action.payload,
+        cargando: false,
       };
     case "ORDER_BY_SCORE":
       let sortedArrayScore =

@@ -2,6 +2,7 @@ import axios from "axios";
 
 export function getRecipes() {
   return async function (dispatch) {
+    dispatch({ type: "CARGANDO" });
     var info = await axios.get("http://localhost:3001/recipes");
     return dispatch({
       type: "GET_RECIPES",
@@ -38,7 +39,8 @@ export function postRecipe(payload) {
 }
 export function getDetail(id) {
   return async function (dispatch) {
-    var info = await axios.get("http://localhost:3001/recipes/" + id);
+    dispatch({ type: "CARGANDO" });
+    var info = await axios.get("http://localhost:3001/recipes/detalle/" + id);
     return dispatch({
       type: "GET_DETAILS",
       payload: info.data,

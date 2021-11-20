@@ -1,7 +1,11 @@
 #buttonSearch {
   font-family: "Varela", sans-serif;
+  font-size: 15px;
+  height: 26px;
 }
 #inputName {
   border-radius: 2px;
-  height: 20px;
+  height: 25px;
+  margin-top: 0px;
+  padding-left: 5px;
 }

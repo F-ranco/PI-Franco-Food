@@ -7,7 +7,6 @@ router.post("/", async (req, res, next) => {
     const {
       name,
       summary,
-      // diets,
       image,
       healthScore,
       healthyFoodLevel,
@@ -17,7 +16,6 @@ router.post("/", async (req, res, next) => {
     const newRecipe = await Recipe.create({
       name,
       summary,
-      // diets,
       image,
       healthScore,
       healthyFoodLevel,

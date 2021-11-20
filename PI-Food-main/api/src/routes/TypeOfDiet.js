@@ -18,19 +18,6 @@ router.get("/", async (req, res) => {
     "whole 30",
   ];
 
-  // sin dieta???
-  // "Gluten Free",
-  // "Ketogenic",
-  // "Vegetarian",
-  // "Lacto-Vegetarian",
-  // "Ovo-Vegetarian",
-  // "Vegan",
-  // "Pescetarian",
-  // "Paleo",
-  // "Primal",
-  // "Low FODMAP",
-  // "Whole30",
-
   dietas.forEach((e) => {
     let el = e;
     Diets.findOrCreate({

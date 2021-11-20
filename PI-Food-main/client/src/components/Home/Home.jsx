@@ -7,16 +7,17 @@ import {
   orderByScore,
   orderByName,
 } from "../../actions";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
 import SearchBar from "../SearchBar/SearchBar";
+import Spinner from "../Spinner/Spinner";
 import "./Home.css";
 
 export default function Home() {
-  const dispatch = useDispatch(); //para llamar a una function
-  const allRecipes = useSelector((state) => state.recipes); //para traerme el state, es = mapStateToProps
-  // console.log(allRecipes);
+  const dispatch = useDispatch();
+  const allRecipes = useSelector((state) => state.recipes);
+  const cargando = useSelector((state) => state.cargando);
 
   //----------------------paginado--------------------------
 
@@ -39,9 +40,7 @@ export default function Home() {
   const [order, setOrder] = useState("ASC"); //estado local para ordenamiento
 
   useEffect(() => {
-    //para renderizar apenas comienza el ciclo de vida del componente, es = componentDidMount
-    dispatch(getRecipes()); //este dispatch es = mapDispatchToProps
-    console.log(allRecipes);
+    dispatch(getRecipes());
   }, []);
 
   function handleClick(e) {
@@ -75,11 +74,13 @@ export default function Home() {
           }}
           id="buttonHome"
         >
-          HOME
+          REFRESH
         </button>
-        <div className="navLink">
-          <NavLink to="/recipe">Create new recipe</NavLink>
-        </div>
+
+        <Link to="/recipe">
+          <button className="buttonCreate">Create new recipe</button>
+        </Link>
+
         <SearchBar />
       </div>
 
@@ -108,51 +109,55 @@ export default function Home() {
           <option value="whole 30">Whole30</option>
         </select>
       </div>
-
-      <div>
-        <Paginado
-          recipesPorPage={recipesPorPage}
-          allRecipes={allRecipes.length}
-          paginado={paginado}
-        />
-      </div>
-      <div className="recipeContainer">
-        {currentRecipes.length === 0 ? (
-          <h3 id="recipeNotFound">No recipes found</h3>
-        ) : (
-          currentRecipes?.map((e) => {
-            return (
-              <div>
-                <Link to={"/home/" + e.id}>
-                  <Card
-                    key={e.id}
-                    name={e.name}
-                    image={
-                      e.image
-                        ? e.image
-                        : "https://ugc.kn3.net/i/760x/http://3.bp.blogspot.com/_HtUqZCoetxE/TI-AEcTItxI/AAAAAAAAABI/0Kr30Fwgnuk/s1600/chef.jpg"
-                    }
-                    diets={
-                      "Diets: " +
-                      (!e.createdInDb
-                        ? e.diets + " "
-                        : e.diets.map((el) => el.name + " ")) +
-                      " ."
-                    }
-                  />
-                </Link>
-              </div>
-            );
-          })
-        )}
-      </div>
-      <div>
-        <Paginado
-          recipesPorPage={recipesPorPage}
-          allRecipes={allRecipes.length}
-          paginado={paginado}
-        />
-      </div>
+      {cargando ? (
+        <Spinner />
+      ) : (
+        <div>
+          <div>
+            <Paginado
+              recipesPorPage={recipesPorPage}
+              allRecipes={allRecipes.length}
+              paginado={paginado}
+            />
+          </div>
+          <div className="recipeContainer">
+            {currentRecipes.length === 0 ? (
+              <h3 id="recipeNotFound">No recipes found</h3>
+            ) : (
+              currentRecipes?.map((e) => {
+                return (
+                  <div>
+                    <Card
+                      key={e.id}
+                      id={e.id}
+                      name={e.name}
+                      image={
+                        e.image
+                          ? e.image
+                          : "https://ugc.kn3.net/i/760x/http://3.bp.blogspot.com/_HtUqZCoetxE/TI-AEcTItxI/AAAAAAAAABI/0Kr30Fwgnuk/s1600/chef.jpg"
+                      }
+                      diets={
+                        "Diets: " +
+                        (!e.createdInDb
+                          ? e.diets + " "
+                          : e.diets.map((el) => el.name + " ")) +
+                        " ."
+                      }
+                    />
+                  </div>
+                );
+              })
+            )}
+          </div>
+          <div>
+            <Paginado
+              recipesPorPage={recipesPorPage}
+              allRecipes={allRecipes.length}
+              paginado={paginado}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
