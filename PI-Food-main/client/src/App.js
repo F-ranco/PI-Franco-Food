@@ -15,7 +15,6 @@ function App() {
         <Route path="/home" component={Home} />
         <Route path="/recipe" component={RecipeCreate} />
       </Switch>
-      {/* <h1>Henry Food</h1> */}
     </div>
   );
 }

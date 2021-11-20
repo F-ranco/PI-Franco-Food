@@ -43,7 +43,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   text-align: center;
-  /* margin-left: 100px; */
   width: 90%;
 }
 .opciones div {
@@ -54,8 +53,6 @@
   align-content: space-around;
   width: 200px;
   height: 40px;
-  /* width: 80px;
-  height: 10px; */
 }
 input {
   border-radius: 8px;
