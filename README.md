@@ -12,7 +12,6 @@
 
 Desarrollo de una SPA (Single Page Application) utilizando __React__ para el Front End y __Redux__ como state management.Todos los componentes fueron desarrollados con __CSS__ sin uso de librerías externas.
 La SPA consume datos de una API ([spoonacular](https://spoonacular.com/food-api)) a través de un Back End desarrollado en __Node.js__ utilizando __Express__ e incluye una Data Base relacional creada con __PostgreSQL__ y __Sequelize__ como ORM.
-Algunos features del proyecto: Búsqueda por nombre, ordenamientos y filtros, formulario controlado para creación de nuevas recetas, paginado numérico.
 La finalidad de esta SPA es que puedan ver distintas recetas de comida junto con información relevante y a partir de ella poder:
 
   - Buscar recetas por su nombre
@@ -23,7 +22,7 @@ La finalidad de esta SPA es que puedan ver distintas recetas de comida junto con
   
  <br></br> 
  
- ⚠️⚠️⚠️ [Haz click aqui para ver un video sobre este proyecto](https://www.linkedin.com/in/franco-oropel/) ⚠️⚠️⚠️ 
+ ⚠️⚠️⚠️ [Haz click aqui para ver un video sobre este proyecto](https://www.linkedin.com/feed/update/urn:li:activity:6868965099827171329/) ⚠️⚠️⚠️ 
  
   <br></br> 
   
